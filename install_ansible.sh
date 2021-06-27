@@ -18,7 +18,6 @@ server_node_2
 server_node_3
 EOT
 #deploy public keys on nodes
-#for f in `cat servers.txt`; do ssh $f `ssh-copy-id -i ~/.ssh/id_rsa.public` -a; done
 cat servers.txt |  while read output
 do
     ssh-copy-id -i ~/.ssh/ansible.pub "$output" > /dev/null
