@@ -50,6 +50,15 @@
         group: root
         mode: 0644
 
+   - name: start httpd(Centos)
+     tags: apache,centos,httpd
+     service: 
+        name: httpd
+        state: started
+        enabled: yes
+        when: ansible_distribution == "CentOS"
+
+
  
  - hosts: db_servers
    become: true
