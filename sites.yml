@@ -41,6 +41,22 @@
        state: latest
      when: ansible_distribution == "Ubuntu"
 
+   - name: replace admin mail in httpd.conf
+     tags: apache.centos,httpd
+     lineinfile: 
+       path: /etc/httpd/conf.d/httpd.conf
+       regex: '^ServerAdmin'
+       line: ServerAdmin somemail@mail.com
+     when: ansible_distribution == "CentOS"
+     register: httpd
+
+   - name: restart httpd
+     tags: apache,centos,httpd
+     service:
+       name: httpd
+       state: restarted
+     when: httpd.changed
+
    - name: copy default html into site
      tags:  apache,apache2,httpd
      copy:
