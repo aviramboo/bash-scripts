@@ -1,3 +1,8 @@
+[web_servers]
 ubuntu-20-master
+
+[db_servers]
 ubuntu-20-slave-1
 ubuntu-20-slave-2
+
+
